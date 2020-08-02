@@ -1,0 +1,10 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Sun Mar 22 22:04:36 CST 2020
+https\://repo.spring.io/milestone/.error=
+https\://repo.spring.io/milestone/.lastUpdated=1584885875900
+https\://repo.spring.io/snapshot/.error=
+http\://maven.aliyun.com/nexus/content/groups/public/.error=
+http\://maven.aliyun.com/nexus/content/groups/public/.lastUpdated=1584885873671
+https\://gitee.com/kamismile/mvnrepo/raw/master/.error=Could not transfer artifact line.thearchy\:common\:pom\:1.0 from/to mvnrepo (https\://gitee.com/kamismile/mvnrepo/raw/master)\: Access denied to\: https\://gitee.com/kamismile/mvnrepo/raw/master/line/thearchy/common/1.0/common-1.0.pom
+https\://repo.spring.io/snapshot/.lastUpdated=1584885874797
+@default-mvnrepo-https\://gitee.com/kamismile/mvnrepo/raw/master/.lastUpdated=1584885876042

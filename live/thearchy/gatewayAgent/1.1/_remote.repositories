@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu Dec 26 21:06:31 CST 2019
+gatewayAgent-1.1.pom>=
+gatewayAgent-1.1.jar>=
