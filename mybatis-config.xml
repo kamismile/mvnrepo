@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+		"classpath:config/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="logImpl" value="LOG4J2"/>
+	</settings>
+	<typeHandlers>
+
+	</typeHandlers>
+	<!-- 自动生成,如需修改请移步 mybatis-config.xml.ftl  -->
+	<mappers>
+	</mappers>
+</configuration>
+<!--<configuration>-->
+	<!--<properties>-->
+		<!--<property name="dialect" value="mysql" />-->
+	<!--</properties>-->
+
+ 	<!--<settings>-->
+ 		<!--<setting name="cacheEnabled" value="false" />   -->
+       <!--&lt;!&ndash;  <setting name="useGeneratedKeys" value="true" />    &ndash;&gt;-->
+        <!--<setting name="defaultExecutorType" value="REUSE" />-->
+ 		<!--&lt;!&ndash; custom property  &ndash;&gt;-->
+ 		<!--&lt;!&ndash; <setting name="cacheKeyLength" value="1"/>   &ndash;&gt;-->
+	<!--</settings> -->
+	<!---->
+	<!--<plugins>  -->
+        <!--<plugin interceptor="live.thearchy.stone.stoneComEx.common.persist.support.plugin.PaginationInterceptor"></plugin>-->
+    <!--</plugins>  -->
+	<!---->
+
+<!--</configuration>-->
