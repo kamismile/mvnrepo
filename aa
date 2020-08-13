@@ -1,0 +1,89 @@
+package ${package.FacadeImpl};
+
+import ${package.Entity}.${entity};
+import ${package.Facade}.${table.facadeName};
+import ${package.Service}.${table.serviceName};
+import ${package.ReqDto}.${table.reqDtoName};
+import ${package.ResponseDto}.${table.responseDtoName};
+import ${package.MapperDto}.${mapperDto};
+import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.gitee.kamismile.stone.commmon.vertx.consumer.BaseControl;
+import com.gitee.kamismile.stone.commmon.base.ResultVO;
+import com.gitee.kamismile.stone.commmon.base.AppRequest;
+import com.gitee.kamismile.stone.commmon.base.pagination.PaginationData;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.apache.commons.collections.CollectionUtils;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.gitee.kamismile.stone.commmon.base.pagination.PaginationInfo;
+import java.util.List;
+import java.util.ArrayList;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+/**
+ * <p>
+ * ${table.comment!} 服务实现类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Component
+public class ${table.facadeImplName} extends BaseControl implements ${table.facadeName} {
+
+    protected final Logger logger = LogManager.getLogger(this.getClass());
+
+
+    @Autowired
+    private ${table.serviceName} service;
+
+    @Override
+    public ResultVO<Integer> add(AppRequest<${table.reqDtoName}> request) {
+        return successfulResultVO(service.getBaseMapper().insert(${mapperDto}.to${entity}(request.getData())));
+    }
+
+    @Override
+    public ResultVO<Integer> updateById(AppRequest<${table.reqDtoName}> request) {
+        return successfulResultVO(service.getBaseMapper().updateById(${mapperDto}.to${entity}(request.getData())));
+    }
+
+    @Override
+    public ResultVO<Integer> deleteById(AppRequest<Long> request) {
+        return successfulResultVO(service.getBaseMapper().deleteById(request.getData()));
+    }
+
+    @Override
+    public ResultVO<Integer> batchDelete(AppRequest<List<Long>> request) {
+        return successfulResultVO(service.getBaseMapper().deleteBatchIds(request.getData()));
+    }
+
+    @Override
+    public ResultVO<${table.responseDtoName}> findById(AppRequest<Long> request) {
+        return successfulResultVO(${mapperDto}.to${responseDto}(service.getById(request.getData())));
+    }
+
+    @Override
+    public ResultVO<List<${table.responseDtoName}>> page(AppRequest<${table.reqDtoName}> request){
+        ${table.reqDtoName} data = request.getData();
+        Page page = new Page(data.getPageIndex(), data.getPageSize());
+        QueryWrapper<${entity}> query = Wrappers.query(${mapperDto}.to${entity}(data));
+        Page<${entity}> result = service.page(page, query);
+
+        ResultVO<List<${table.responseDtoName}>> resultVO = new ResultVO<List<${table.responseDtoName}>>();
+        resultVO.setPage(new PaginationInfo(data.getPageIndex(), data.getPageSize(), result.getTotal()));
+
+        if (CollectionUtils.isEmpty(result.getRecords())) {
+               return resultVO;
+        }
+
+        List<${table.responseDtoName}> list = new ArrayList<${table.responseDtoName}>();
+        for (${entity} entity : result.getRecords()) {
+          list.add(${mapperDto}.to${responseDto}(entity));
+        }
+        resultVO.setData(list);
+
+        return resultVO;
+    }
+}
